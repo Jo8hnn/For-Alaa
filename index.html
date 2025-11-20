@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Alaa 🤍</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #fff6f9, #e8f4ff);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #444;
+    }
 
+    #box {
+        background: white;
+        padding: 30px 25px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 380px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        animation: fade 0.5s ease-in-out;
+    }
+
+    @keyframes fade {
+        from {opacity: 0; transform: translateY(10px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    button {
+        background: #64aafc;
+        border: none;
+        padding: 12px 22px;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background: #4d96f3;
+    }
+
+    .circle-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 15px auto;
+        display: block;
+        border: 3px solid #e0e0e0;
+    }
+
+    .big-wrong {
+        font-size: 60px;
+        color: #ff4b4b;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+
+<body>
+<div id="box">
+    <!-- Page 1 initial state -->
+    <h2 id="title">Welcome Alaa 🤍</h2>
+    <p id="text">
+        The stars have told me today that one of them stopped shining as brightly as they usually do, and that’s because its source of energy and life force is upset. 
+        That amazing human being that always leaves a smile on other people’s faces is upset. 
+        How can that Star shine when this amazing person isn’t feeling her best??
+    </p>
+    <img id="photo" style="display:none;" />
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<script>
+let page = 1;
+
+function nextPage() {
+    const title = document.getElementById("title");
+    const text = document.getElementById("text");
+    const photo = document.getElementById("photo");
+
+    if (page === 1) {
+        // Arabic message + image 1
+        title.textContent = "";
+        text.textContent = 
+        "المصاعب تحب دائما ان تأتي جماعا لا فرادا. صح اليوم جان كلش صعب، و انتي جنتي متحمسه كلش و مبدله و متحضره و مرتبه كلشي فجدا حقج تحسين بخيبة أمل لان كدرنا نسوي بس فكري بي من ناحية ثانيه، راح يكون اكو وقت اكثر علمود يكون مثالي اكثر يليق بالتعب مالتج و راح تفرحين كلش وقتها 🤍";
+        
+        photo.src = "/mnt/data/IMG_2600.jpeg";
+        photo.style.display = "block";
+        photo.className = "circle-img";
+
+        page++;
+    }
+
+    else if (page === 2) {
+        // Kurdish message + image 2
+        title.textContent = "";
+        text.textContent =
+        "بۆیە، دڵتەنگ مەبە. هەمیشە شتەکان لە کۆتاییدا بە باشی دەردەکەون. تۆ کاری خۆتت ئەنجامداوە. تۆ چەندین کاتژمێرت لەم پڕۆژەیەدا بەسەر بردووە و لە کۆتاییدا بەم شێوەیە یان بەو شێوەیە سوودیان دەبێت. تۆ سەرسوڕهێنەر دەکەیت، تەنانەت نازانم چۆن دەریببڕم کە ئیتر چەندە شانازیت پێوە دەکەم چونکە زۆر شانازی دەکەم. تۆ کچێکی سەرسوڕهێنەری ئالا، پڕ لە توانا و پڕ لە هەموو ئەو سیفەتە باشانەی کە کەسێکی باش دەکاتە کەسێکی باش. ڕاستگۆیانە دەتوانم بڵێم دڵخۆشم کە تۆم لە ژیانمدا هەیە.";
+
+        photo.src = "/mnt/data/IMG_2391.jpeg";
+        photo.style.display = "block";
+
+        page++;
+        document.querySelector("button").textContent = "Continue";
+    }
+
+    else {
+        showPoll();
+    }
+}
+
+function showPoll() {
+    document.getElementById("box").innerHTML = `
+        <h2>Can we see that beautiful smile now? 😊</h2>
+        <button onclick="yesAnswer()">Yes 💛</button>
+        <button onclick="noAnswer()" style="background:#ff7979; margin-left:10px;">Not yet</button>
+    `;
+}
+
+function yesAnswer() {
+    document.getElementById("box").innerHTML = `
+        <h2>There it is! 😊</h2>
+        <p>You just made someone's day brighter.</p>
+    `;
+}
+
+function noAnswer() {
+    document.getElementById("box").innerHTML = `
+        <div class="big-wrong">❌</div>
+        <p>Wrong answer 😤  
+        Try again…</p>
+        <button onclick="showPoll()">Back to the question</button>
+    `;
+}
+</script>
+
+</body>
+</html>
